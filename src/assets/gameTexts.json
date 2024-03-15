@@ -1,0 +1,64 @@
+{
+    "texts": [
+        {
+            "id": 1,
+            "text": "The quick brown fox jumps over the lazy dog.",
+            "level": "Easy"
+            
+        },
+        {
+            "id": 2,
+            "text": "Sphinx of black quartz, judge my vow.",
+            "level": "Easy"
+            
+        },
+        {
+            "id": 3,
+            "text": "Pack my box with five dozen liquor jugs.",
+            "level": "Easy"
+            
+        },
+        {
+            "id": 4,
+            "text": "How vexingly quick daft zebras jump!",
+            "level": "Easy"
+            
+        },
+        {
+            "id": 5,
+            "text": "Jackdaws love my big sphinx of quartz.",
+            "level": "Medium"
+            
+        },
+        {
+            "id": 6,
+            "text": "Mr. Jock, TV quiz PhD, bags few lynx.",
+            "level": "Medium"
+            
+        },
+        {
+            "id": 7,
+            "text": "Crazy Frederick bought many very exquisite opal jewels.",
+            "level": "Medium"
+            
+        },
+        {
+            "id": 8,
+            "text": "Sixty zippers were quickly picked from the woven jute bag.",
+            "level": "Hard"
+            
+        },
+        {
+            "id": 9,
+            "text": "A quick brown fox jumps over the lazy dog.",
+            "level": "Hard"
+            
+        },
+        {
+            "id": 10,
+            "text": "The five boxing wizards jump quickly.",
+            "level": "Hard"
+            
+        }
+    ]
+}
