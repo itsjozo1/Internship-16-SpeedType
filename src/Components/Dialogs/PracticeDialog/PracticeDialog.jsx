@@ -1,16 +1,24 @@
+/* eslint-disable react/prop-types */
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useGameMode } from "../../../Providers/GameModeProvider";
 
-// eslint-disable-next-line react/prop-types
-export default function NewGameDialog({ isOpen, handleClose, handleSubmit }) {
+export default function PracticeDialog({ isOpen, handleClose }) {
+  const { changeMode } = useGameMode();
+
+  const handleSubmit = () => {
+    changeMode("Practice");
+    handleClose();
+  };
+
   return (
     <Dialog open={isOpen} keepMounted onClose={handleClose}>
-      <DialogTitle>{"Select game mode"}</DialogTitle>
+      <DialogTitle>{"Do you want to enter practice mode?"}</DialogTitle>
       <DialogActions>
-        <Button onClick={handleSubmit}>Regular</Button>
-        <Button onClick={handleClose}>Instant Death</Button>
+        <Button onClick={handleSubmit}>Yes</Button>
+        <Button onClick={handleClose}>No</Button>
       </DialogActions>
     </Dialog>
   );
