@@ -1,6 +1,6 @@
 import { useDialog } from "../../Providers/DialogProvider";
-import NewGameDialog from "./NewGameDialog/NewGameDialog";
-import PracticeDialog from "./PracticeDialog/PracticeDialog";
+import NewGameDialog from "./NewGameDialog";
+import PracticeDialog from "./PracticeDialog";
 import { DIALOG } from "../../Providers/DialogProvider";
 
 const DialogsSwitch = () => {

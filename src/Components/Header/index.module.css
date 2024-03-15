@@ -17,3 +17,12 @@
   display: flex;
   gap: 1rem;
 }
+
+.headerButton {
+  color: black;
+  border-color: black;
+}
+
+.themeIcon {
+  color: black;
+}

@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useGameMode } from "../../../Providers/GameModeProvider";
+import { useGameMode } from "../../Providers/GameModeProvider";
 
 export default function PracticeDialog({ isOpen, handleClose }) {
   const { changeMode } = useGameMode();

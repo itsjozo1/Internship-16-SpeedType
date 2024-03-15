@@ -19,10 +19,20 @@ function Header() {
     <div className={classes.headerContainer}>
       <h1 className={classes.headerHeadline}>Typing Game</h1>
       <div className={classes.headerButtonsContainer}>
-        <Button variant="outlined" size="medium" onClick={handlePracticeClick}>
+        <Button
+          className={classes.headerButton}
+          variant="outlined"
+          size="medium"
+          onClick={handlePracticeClick}
+        >
           Practice
         </Button>
-        <Button variant="outlined" size="medium" onClick={handleNewGameClick}>
+        <Button
+          className={classes.headerButton}
+          variant="outlined"
+          size="medium"
+          onClick={handleNewGameClick}
+        >
           New Game
         </Button>
         <ThemeIcon />
