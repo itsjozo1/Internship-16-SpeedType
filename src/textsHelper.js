@@ -1,8 +1,11 @@
-import texts from './texts.json';
+import texts from './gameTexts.json';
 
 const getAllTexts = () => texts;
 
-const getTextsByLevel = (level) => texts.filter((text) => text.level === level);
+const getTextsByLevel = (level) => {
+    const foundText = texts.texts.filter((text) => text.level === level);
+    return foundText ? foundText.text : null;
+}
 
 const getNotRepeatedTexts = (texts) => {
     const notRepeatedTexts = [];

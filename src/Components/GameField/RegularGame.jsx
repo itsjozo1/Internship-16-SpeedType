@@ -1,8 +1,13 @@
+import { getTextsByLevel } from "../../textsHelper";
+
 const RegularGame = () => {
   return (
-    <div>
+    <>
       <h2>Regular Mode</h2>
-    </div>
+      <div>
+        <p>{getTextsByLevel("Easy")}</p>
+      </div>
+    </>
   );
 };
 
