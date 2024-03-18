@@ -1,19 +1,27 @@
 import { useState, useEffect } from "react";
 import classes from "./game.module.css";
-import NewLevelDialog from "../Dialogs/NewLevelDialog";
 import { useGameMode } from "../../Providers/GameModeProvider";
+import DialogsSwitch from "../Dialogs/DialogsSwitch";
+import { DIALOG, useDialog } from "../../Providers/DialogProvider";
 
 const RegularGame = () => {
+  const { open, isOpen } = useDialog(); // Accessing the open, isOpen, and close methods from useDialog hook
   const { expectedText, gameLevel, changeLevel } = useGameMode();
   const [userInput, setUserInput] = useState("");
   const [stopwatchStarted, setStopwatchStarted] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [gameCompleted, setGameCompleted] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  console.log(isOpen);
 
   useEffect(() => {
     if (gameLevel === 0) {
       changeLevel(1);
     }
+    setIsDialogOpen(false);
+    setStopwatchStarted(false);
+    setElapsedTime(0);
     setGameCompleted(false);
     setUserInput("");
     document.getElementById("gameTextInput").value = "";
@@ -26,8 +34,12 @@ const RegularGame = () => {
         setElapsedTime((prevElapsedTime) => prevElapsedTime + 1);
       }, 1000);
     }
+    if (gameCompleted && isDialogOpen === false) {
+      gameLevel === 3 ? open(DIALOG.END_GAME) : open(DIALOG.NEW_LEVEL);
+      setIsDialogOpen(true);
+    }
     return () => clearInterval(intervalId);
-  }, [stopwatchStarted, gameCompleted]);
+  }, [stopwatchStarted, gameCompleted, open, isDialogOpen, gameLevel]);
 
   const handleInputChange = (event) => {
     if (!stopwatchStarted) {
@@ -121,11 +133,10 @@ const RegularGame = () => {
         </label>
       </div>
       {
-        <NewLevelDialog
-          isOpen={gameCompleted}
+        <DialogsSwitch
           wpm={calculateWPM()}
           accuracy={calculateAccuracy()}
-          timeElapsed={formatTime(elapsedTime)}
+          formatTime={formatTime(elapsedTime)}
         />
       }
     </>

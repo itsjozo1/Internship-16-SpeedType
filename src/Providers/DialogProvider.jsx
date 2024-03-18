@@ -5,6 +5,8 @@ import { useState } from "react";
 export const DIALOG = {
   NEW_GAME: "NEW_GAME",
   PRACTICE: "PRACTICE",
+  NEW_LEVEL: "NEW_LEVEL",
+  END_GAME: "END_GAME",
 };
 
 const defaultContext = {

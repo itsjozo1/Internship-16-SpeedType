@@ -7,23 +7,19 @@ import { DialogContentText } from "@mui/material";
 import classes from "./index.module.css";
 import { useGameMode } from "../../Providers/GameModeProvider";
 
-const NewLevelDialog = ({
-  isOpen,
-  accuracy,
-  wpm,
-  timeElapsed,
-  handleClose,
-}) => {
-  const { gameLevel, changeLevel } = useGameMode();
+const EndGameDialog = ({ isOpen, accuracy, wpm, timeElapsed, handleClose }) => {
+  const { changeLevel } = useGameMode();
 
   const handleChangeLevel = () => {
-    changeLevel(gameLevel + 1);
+    changeLevel(0);
     handleClose();
   };
 
   return (
     <Dialog open={isOpen} keepMounted onClose={handleClose}>
-      <DialogTitle>{"Do you want to proceed to the next level?"}</DialogTitle>
+      <DialogTitle>
+        {"You have passed last level, do you want to replay game?"}
+      </DialogTitle>
       <DialogContentText className={classes.dialogContentText}>
         Words per minute: {wpm}
       </DialogContentText>
@@ -41,4 +37,4 @@ const NewLevelDialog = ({
   );
 };
 
-export default NewLevelDialog;
+export default EndGameDialog;
