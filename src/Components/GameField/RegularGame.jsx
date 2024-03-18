@@ -2,11 +2,17 @@ import { useState, useEffect } from "react";
 import { getTextsByLevel } from "../../textsHelper";
 import classes from "./game.module.css";
 import NewLevelDialog from "../Dialogs/NewLevelDialog";
+import { useGameMode } from "../../Providers/GameModeProvider";
 
 const RegularGame = () => {
-  const currentLevelTexts = getTextsByLevel(2);
-  const randomIndex = Math.floor(Math.random() * currentLevelTexts.length);
-  const expectedText = currentLevelTexts[randomIndex].text;
+  const { gameLevel, changeLevel } = useGameMode();
+
+  if (gameLevel === 0) {
+    changeLevel(1);
+  }
+
+  const currentLevelTexts = getTextsByLevel(gameLevel);
+  const expectedText = currentLevelTexts[2].text;
   const [userInput, setUserInput] = useState("");
   const [stopwatchStarted, setStopwatchStarted] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
@@ -78,6 +84,24 @@ const RegularGame = () => {
     return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
   };
 
+  const calculateWPM = () => {
+    const wordsTyped = expectedText.trim().split(" ").filter(Boolean).length;
+    const minutes = elapsedTime / 60;
+    const wpm = wordsTyped / minutes;
+    return Math.round(wpm);
+  };
+
+  const calculateAccuracy = () => {
+    let correctChars = 0;
+    for (let i = 0; i < userInput.length; i++) {
+      if (userInput[i] === expectedText[i]) {
+        correctChars++;
+      }
+    }
+    const accuracy = Math.floor((correctChars / expectedText.length) * 100);
+    return accuracy;
+  };
+
   return (
     <>
       <h2>Regular Mode</h2>
@@ -95,7 +119,14 @@ const RegularGame = () => {
           {highlightErrors()}
         </label>
       </div>
-      {<NewLevelDialog isOpen={gameCompleted} />}
+      {
+        <NewLevelDialog
+          isOpen={gameCompleted}
+          wpm={calculateWPM()}
+          accuracy={calculateAccuracy()}
+          timeElapsed={formatTime(elapsedTime)}
+        />
+      }
     </>
   );
 };

@@ -4,9 +4,11 @@ import ThemeIcon from "../ThemeIcon/ThemeIcon";
 import { DIALOG, useDialog } from "../../Providers/DialogProvider";
 import DialogsSwitch from "../Dialogs/DialogsSwitch";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
+import { useGameMode } from "../../Providers/GameModeProvider";
 
 function Header() {
   const { open } = useDialog();
+  const { gameLevel } = useGameMode();
 
   const handlePracticeClick = () => {
     open(DIALOG.PRACTICE);
@@ -22,6 +24,7 @@ function Header() {
         <KeyboardIcon className={classes.keyboardIcon} />
         Typing Game
       </h1>
+      <div>Level: {gameLevel}</div>
       <div className={classes.headerButtonsContainer}>
         <Button
           className={classes.headerButton}
