@@ -41,11 +41,14 @@ const RegularGame = () => {
   }, [stopwatchStarted, gameCompleted, open, isDialogOpen, gameLevel]);
 
   useEffect(() => {
-    if (gameOver) {
-      open(DIALOG.GAME_OVER);
+    if (gameOver && !gameCompleted && !isDialogOpen) {
+      setGameCompleted(true);
       setGameOver(false);
+      setIsDialogOpen(true);
+      open(DIALOG.GAME_OVER);
     }
-  }, [isDialogOpen, open, gameOver]);
+    setGameOver(false);
+  }, [gameOver, isDialogOpen, open, gameCompleted]);
 
   const handleInputChange = (event) => {
     if (!stopwatchStarted) {
