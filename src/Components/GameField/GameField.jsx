@@ -5,6 +5,7 @@ import RegularGame from "./RegularGame";
 
 const GameField = () => {
   const { gameMode } = useGameMode();
+
   switch (gameMode) {
     case "Regular":
       return <RegularGame />;

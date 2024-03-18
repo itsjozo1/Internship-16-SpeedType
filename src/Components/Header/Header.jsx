@@ -24,7 +24,7 @@ function Header() {
         <KeyboardIcon className={classes.keyboardIcon} />
         Typing Game
       </h1>
-      <div>Level: {gameLevel}</div>
+      <div>{gameLevel === 0 ? "" : "Level: " + gameLevel}</div>
       <div className={classes.headerButtonsContainer}>
         <Button
           className={classes.headerButton}

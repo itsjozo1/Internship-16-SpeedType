@@ -6,9 +6,10 @@ import { useGameMode } from "../../Providers/GameModeProvider";
 
 // eslint-disable-next-line react/prop-types
 export default function NewGameDialog({ isOpen, handleClose }) {
-  const { changeMode } = useGameMode();
+  const { changeMode, changeLevel } = useGameMode();
 
   const handleNewGameClick = () => {
+    changeLevel(0);
     changeMode("Regular");
     handleClose();
   };

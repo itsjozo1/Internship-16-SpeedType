@@ -1,6 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react/prop-types */
 import { createContext, useContext } from "react";
 import { useState } from "react";
+import { getTextsByLevel } from "../textsHelper";
 
 const defaultContext = {
   gameMode: "REGULAR",
@@ -9,11 +11,16 @@ const defaultContext = {
 
 const GameModeContext = createContext(defaultContext);
 
-// eslint-disable-next-line react/prop-types
 const GameModeProvider = ({ children }) => {
   const [gameMode, setGameMode] = useState(defaultContext.gameMode);
   const [gameLevel, setGameLevel] = useState(defaultContext.gameLevel);
+  let expectedText = "";
 
+  if (gameLevel !== 0) {
+    const textsByLevel = getTextsByLevel(gameLevel);
+    expectedText =
+      textsByLevel[Math.floor(Math.random() * textsByLevel.length)].text;
+  }
   const changeLevel = (level) => {
     setGameLevel(level);
   };
@@ -24,7 +31,7 @@ const GameModeProvider = ({ children }) => {
 
   return (
     <GameModeContext.Provider
-      value={{ gameMode, changeMode, gameLevel, changeLevel }}
+      value={{ gameMode, changeMode, gameLevel, changeLevel, expectedText }}
     >
       {children}
     </GameModeContext.Provider>

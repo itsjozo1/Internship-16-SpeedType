@@ -1,22 +1,23 @@
 import { useState, useEffect } from "react";
-import { getTextsByLevel } from "../../textsHelper";
 import classes from "./game.module.css";
 import NewLevelDialog from "../Dialogs/NewLevelDialog";
 import { useGameMode } from "../../Providers/GameModeProvider";
 
 const RegularGame = () => {
-  const { gameLevel, changeLevel } = useGameMode();
-
-  if (gameLevel === 0) {
-    changeLevel(1);
-  }
-
-  const currentLevelTexts = getTextsByLevel(gameLevel);
-  const expectedText = currentLevelTexts[2].text;
+  const { expectedText, gameLevel, changeLevel } = useGameMode();
   const [userInput, setUserInput] = useState("");
   const [stopwatchStarted, setStopwatchStarted] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [gameCompleted, setGameCompleted] = useState(false);
+
+  useEffect(() => {
+    if (gameLevel === 0) {
+      changeLevel(1);
+    }
+    setGameCompleted(false);
+    setUserInput("");
+    document.getElementById("gameTextInput").value = "";
+  }, [gameLevel, changeLevel]);
 
   useEffect(() => {
     let intervalId;
