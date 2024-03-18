@@ -2,43 +2,43 @@
     "texts": [
         {
             "id": 1,
-            "text": "The quick brown fox jumps over the lazy dog.",
+            "text": "the sun shines brightly in the clear blue sky birds chirp happily ",
             "level": 1
             
         },
         {
             "id": 2,
-            "text": "Sphinx of black quartz, judge my vow.",
+            "text": "i love to walk in the park on sunny days the flowers bloom beautifully",
             "level": 1
             
         },
         {
             "id": 3,
-            "text": "Pack my box with five dozen liquor jugs.",
+            "text": "my cat loves to curl up by the fireplace it purrs contentedly",
             "level": 1
             
         },
         {
             "id": 4,
-            "text": "How vexingly quick daft zebras jump!",
+            "text": "the children laugh and play in the playground their joyful voices ",
             "level": 1
             
         },
         {
             "id": 5,
-            "text": "Jackdaws love my big sphinx of quartz.",
+            "text": "My new job at the bakery is very enjoyable I love the smell of pizza",
             "level": 2
             
         },
         {
             "id": 6,
-            "text": "Mr. Jock, TV quiz PhD, bags few lynx.",
+            "text": "This donut is delicious and sweet I love the taste of the sugar ",
             "level": 2
             
         },
         {
             "id": 7,
-            "text": "Crazy Frederick bought many very exquisite opal jewels.",
+            "text": "Crazy hamburgers and pizzas were quickly eaten by the hungry customers.",
             "level": 2
             
         },
@@ -50,13 +50,13 @@
         },
         {
             "id": 9,
-            "text": "A quick brown fox jumps over the lazy dog.",
+            "text": "A quick brown fox jumps over the lazy dog. Miss Jute, the lazy dog,",
             "level": 3
             
         },
         {
             "id": 10,
-            "text": "The five boxing wizards jump quickly.",
+            "text": "The five boxing wizards jump quickly. What a fun way to exercise!",
             "level": 3
             
         }

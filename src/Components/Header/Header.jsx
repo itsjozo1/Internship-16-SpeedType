@@ -1,6 +1,5 @@
 import classes from "./index.module.css";
 import { Button } from "@mui/material";
-import ThemeIcon from "../ThemeIcon/ThemeIcon";
 import { DIALOG, useDialog } from "../../Providers/DialogProvider";
 import DialogsSwitch from "../Dialogs/DialogsSwitch";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
@@ -45,7 +44,6 @@ function Header() {
         >
           New Game
         </Button>
-        <ThemeIcon />
         <DialogsSwitch />
       </div>
     </div>
