@@ -4,6 +4,7 @@ import PracticeDialog from "./PracticeDialog";
 import { DIALOG } from "../../Providers/DialogProvider";
 import NewLevelDialog from "./NewLevelDialog";
 import EndGameDialog from "./EndGameDialog";
+import GameOverDialog from "./GameOverDialog";
 
 // eslint-disable-next-line react/prop-types
 const DialogsSwitch = ({ wpm, accuracy, formatTime }) => {
@@ -13,6 +14,10 @@ const DialogsSwitch = ({ wpm, accuracy, formatTime }) => {
     <>
       <NewGameDialog isOpen={isOpen === DIALOG.NEW_GAME} handleClose={close} />
       <PracticeDialog isOpen={isOpen === DIALOG.PRACTICE} handleClose={close} />
+      <GameOverDialog
+        isOpen={isOpen === DIALOG.GAME_OVER}
+        handleClose={close}
+      />
       <NewLevelDialog
         isOpen={isOpen === DIALOG.NEW_LEVEL}
         handleClose={close}

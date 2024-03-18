@@ -28,7 +28,6 @@ const NewLevelDialog = ({
     if (isOpen && wpm < 1000 && isOpenDialog !== isOpen) {
       setIsOpenDialog(isOpen);
       updateAverageWpm(wpm);
-      console.log(wpm);
       setValidDialogData({
         wpm: wpm,
         accuracy: accuracy,

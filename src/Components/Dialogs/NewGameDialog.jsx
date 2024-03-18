@@ -15,6 +15,7 @@ export default function NewGameDialog({ isOpen, handleClose }) {
   };
 
   const handleInstantDeathClick = () => {
+    changeLevel(0);
     changeMode("Instant Death");
     handleClose();
   };

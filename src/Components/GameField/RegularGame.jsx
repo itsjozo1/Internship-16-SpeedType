@@ -6,12 +6,15 @@ import { DIALOG, useDialog } from "../../Providers/DialogProvider";
 
 const RegularGame = () => {
   const { open } = useDialog();
-  const { expectedText, gameLevel, changeLevel } = useGameMode();
+  const { gameMode, expectedText, gameLevel, changeLevel } = useGameMode();
   const [userInput, setUserInput] = useState("");
   const [stopwatchStarted, setStopwatchStarted] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [gameCompleted, setGameCompleted] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+
+  console.log(gameMode);
 
   useEffect(() => {
     if (gameLevel === 0) {
@@ -38,6 +41,13 @@ const RegularGame = () => {
     }
     return () => clearInterval(intervalId);
   }, [stopwatchStarted, gameCompleted, open, isDialogOpen, gameLevel]);
+
+  useEffect(() => {
+    if (gameOver) {
+      open(DIALOG.GAME_OVER);
+      setGameOver(false);
+    }
+  }, [open, gameOver]);
 
   const handleInputChange = (event) => {
     if (!stopwatchStarted) {
@@ -80,13 +90,24 @@ const RegularGame = () => {
         <span
           key={index}
           className={
-            char === userInputArray[index] ? classes.correct : classes.incorrect
+            char === userInputArray[index]
+              ? classes.correct
+              : checkIsInstantDeathMode()
           }
         >
           {char}
         </span>
       );
     });
+  };
+
+  const checkIsInstantDeathMode = () => {
+    if (gameMode === "Instant Death" && !gameOver) {
+      setGameOver(true);
+      return classes.incorrect;
+    } else {
+      return classes.incorrect;
+    }
   };
 
   const formatTime = (seconds) => {
@@ -115,7 +136,7 @@ const RegularGame = () => {
 
   return (
     <>
-      <h2>Regular Mode</h2>
+      <h2>{gameMode} mode</h2>
       {stopwatchStarted && (
         <p className={classes.stopwatch}>Time: {formatTime(elapsedTime)}</p>
       )}

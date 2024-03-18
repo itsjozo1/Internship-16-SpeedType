@@ -7,6 +7,7 @@ export const DIALOG = {
   PRACTICE: "PRACTICE",
   NEW_LEVEL: "NEW_LEVEL",
   END_GAME: "END_GAME",
+  GAME_OVER: "GAME_OVER",
 };
 
 const defaultContext = {
