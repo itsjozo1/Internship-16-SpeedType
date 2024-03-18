@@ -14,8 +14,6 @@ const RegularGame = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [gameOver, setGameOver] = useState(false);
 
-  console.log(gameMode);
-
   useEffect(() => {
     if (gameLevel === 0) {
       changeLevel(1);
@@ -47,7 +45,7 @@ const RegularGame = () => {
       open(DIALOG.GAME_OVER);
       setGameOver(false);
     }
-  }, [open, gameOver]);
+  }, [isDialogOpen, open, gameOver]);
 
   const handleInputChange = (event) => {
     if (!stopwatchStarted) {

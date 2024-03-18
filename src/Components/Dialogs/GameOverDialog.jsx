@@ -6,10 +6,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useGameMode } from "../../Providers/GameModeProvider";
 
 export default function PracticeDialog({ isOpen, handleClose }) {
-  const { changeMode } = useGameMode();
+  const { changeLevel } = useGameMode();
 
   const handleSubmit = () => {
-    changeMode("Practice");
+    changeLevel(0);
     handleClose();
   };
 

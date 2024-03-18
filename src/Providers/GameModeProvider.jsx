@@ -33,9 +33,11 @@ const GameModeProvider = ({ children }) => {
   };
 
   const updateAverageWpm = (wpm) => {
+    const newAverageWpm = Math.floor(
+      (averageWpm * (totalPlayedGames - 1) + wpm) / totalPlayedGames
+    );
+    setAverageWpm(newAverageWpm);
     setTotalPlayedGames(totalPlayedGames + 1);
-    console.log(totalPlayedGames);
-    setAverageWpm((averageWpm + wpm) / totalPlayedGames);
   };
 
   return (
