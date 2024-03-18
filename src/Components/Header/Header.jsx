@@ -8,7 +8,7 @@ import { useGameMode } from "../../Providers/GameModeProvider";
 
 function Header() {
   const { open } = useDialog();
-  const { gameLevel } = useGameMode();
+  const { gameLevel, averageWpm } = useGameMode();
 
   const handlePracticeClick = () => {
     open(DIALOG.PRACTICE);
@@ -24,7 +24,10 @@ function Header() {
         <KeyboardIcon className={classes.keyboardIcon} />
         Typing Game
       </h1>
-      <div>{gameLevel === 0 ? "" : "Level: " + gameLevel}</div>
+      <div>
+        <p>{gameLevel === 0 ? "" : "Level: " + gameLevel}</p>
+        <p>{averageWpm === 0 ? "" : "Average WPM: " + averageWpm}</p>
+      </div>
       <div className={classes.headerButtonsContainer}>
         <Button
           className={classes.headerButton}

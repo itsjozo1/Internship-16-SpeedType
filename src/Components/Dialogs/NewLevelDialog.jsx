@@ -6,6 +6,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { DialogContentText } from "@mui/material";
 import classes from "./index.module.css";
 import { useGameMode } from "../../Providers/GameModeProvider";
+import { useEffect, useState } from "react";
 
 const NewLevelDialog = ({
   isOpen,
@@ -14,7 +15,29 @@ const NewLevelDialog = ({
   timeElapsed,
   handleClose,
 }) => {
-  const { gameLevel, changeLevel } = useGameMode();
+  const { gameLevel, changeLevel, updateAverageWpm } = useGameMode();
+  const [isOpenDialog, setIsOpenDialog] = useState(false);
+  const [validDialogData, setValidDialogData] = useState({
+    wpm: 0,
+    accuracy: 0,
+    timeElapsed: 0,
+  });
+
+  useEffect(() => {
+    // filtrira dialoge jer se više njih rendera
+    if (isOpen && wpm < 1000 && isOpenDialog !== isOpen) {
+      setIsOpenDialog(isOpen);
+      updateAverageWpm(wpm);
+      console.log(wpm);
+      setValidDialogData({
+        wpm: wpm,
+        accuracy: accuracy,
+        timeElapsed: timeElapsed,
+      });
+    } else {
+      setIsOpenDialog(isOpen);
+    }
+  }, [wpm, isOpen, accuracy, timeElapsed, updateAverageWpm, isOpenDialog]);
 
   const handleChangeLevel = () => {
     changeLevel(gameLevel + 1);
@@ -25,13 +48,13 @@ const NewLevelDialog = ({
     <Dialog open={isOpen} keepMounted onClose={handleClose}>
       <DialogTitle>{"Do you want to proceed to the next level?"}</DialogTitle>
       <DialogContentText className={classes.dialogContentText}>
-        Words per minute: {wpm}
+        Words per minute: {validDialogData.wpm}
       </DialogContentText>
       <DialogContentText className={classes.dialogContentText}>
-        Accuracy: {accuracy}%
+        Accuracy: {validDialogData.accuracy}%
       </DialogContentText>
       <DialogContentText className={classes.dialogContentText}>
-        Time elapsed: {timeElapsed} seconds
+        Time elapsed: {validDialogData.timeElapsed} seconds
       </DialogContentText>
       <DialogActions>
         <Button onClick={handleChangeLevel}>Yes</Button>

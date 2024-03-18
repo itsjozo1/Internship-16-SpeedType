@@ -5,15 +5,13 @@ import DialogsSwitch from "../Dialogs/DialogsSwitch";
 import { DIALOG, useDialog } from "../../Providers/DialogProvider";
 
 const RegularGame = () => {
-  const { open, isOpen } = useDialog(); // Accessing the open, isOpen, and close methods from useDialog hook
+  const { open } = useDialog();
   const { expectedText, gameLevel, changeLevel } = useGameMode();
   const [userInput, setUserInput] = useState("");
   const [stopwatchStarted, setStopwatchStarted] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [gameCompleted, setGameCompleted] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  console.log(isOpen);
 
   useEffect(() => {
     if (gameLevel === 0) {

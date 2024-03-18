@@ -7,6 +7,7 @@ import { getTextsByLevel } from "../textsHelper";
 const defaultContext = {
   gameMode: "REGULAR",
   gameLevel: 0,
+  averageWpm: 0,
 };
 
 const GameModeContext = createContext(defaultContext);
@@ -14,6 +15,8 @@ const GameModeContext = createContext(defaultContext);
 const GameModeProvider = ({ children }) => {
   const [gameMode, setGameMode] = useState(defaultContext.gameMode);
   const [gameLevel, setGameLevel] = useState(defaultContext.gameLevel);
+  const [averageWpm, setAverageWpm] = useState(defaultContext.averageWpm);
+  const [totalPlayedGames, setTotalPlayedGames] = useState(1);
   let expectedText = "";
 
   if (gameLevel !== 0) {
@@ -29,9 +32,23 @@ const GameModeProvider = ({ children }) => {
     setGameMode(mode);
   };
 
+  const updateAverageWpm = (wpm) => {
+    setTotalPlayedGames(totalPlayedGames + 1);
+    console.log(totalPlayedGames);
+    setAverageWpm((averageWpm + wpm) / totalPlayedGames);
+  };
+
   return (
     <GameModeContext.Provider
-      value={{ gameMode, changeMode, gameLevel, changeLevel, expectedText }}
+      value={{
+        gameMode,
+        changeMode,
+        gameLevel,
+        changeLevel,
+        expectedText,
+        averageWpm,
+        updateAverageWpm,
+      }}
     >
       {children}
     </GameModeContext.Provider>
