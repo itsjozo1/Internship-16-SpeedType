@@ -26,3 +26,9 @@
 .themeIcon {
   color: black;
 }
+
+.keyboardIcon {
+  font-size: larger;
+  position: relative;
+  top: 10px;
+}

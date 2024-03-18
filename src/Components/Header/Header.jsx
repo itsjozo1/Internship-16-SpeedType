@@ -19,7 +19,7 @@ function Header() {
   return (
     <div className={classes.headerContainer}>
       <h1 className={classes.headerHeadline}>
-        <KeyboardIcon />
+        <KeyboardIcon className={classes.keyboardIcon} />
         Typing Game
       </h1>
       <div className={classes.headerButtonsContainer}>

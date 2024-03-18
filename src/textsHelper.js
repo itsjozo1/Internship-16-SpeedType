@@ -4,7 +4,7 @@ const getAllTexts = () => texts;
 
 const getTextsByLevel = (level) => {
     const foundText = texts.texts.filter((text) => text.level === level);
-    return foundText ? foundText.text : null;
+    return foundText ? foundText : null;
 }
 
 const getNotRepeatedTexts = (texts) => {
